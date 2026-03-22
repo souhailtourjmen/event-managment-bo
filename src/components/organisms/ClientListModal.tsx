@@ -37,20 +37,20 @@ const ClientListModal: React.FC<ClientListModalProps> = ({ isOpen, onClose, clie
           ) : (
             <div className="space-y-4">
               {clients.map((client) => (
-                <div key={client.id} className="flex items-center p-5 rounded-2xl border border-border/50 hover:bg-background/30 transition-all group">
-                  <div className="w-12 h-12 rounded-2xl bg-secondary/10 flex items-center justify-center text-secondary mr-5 group-hover:scale-110 transition-transform">
+                <div key={client.id} className="flex items-center p-5 rounded-2xl border border-border/50 hover:bg-background/50 transition-all group">
+                  <div className="w-12 h-12 rounded-2xl bg-secondary flex items-center justify-center text-on-secondary mr-5 group-hover:scale-110 transition-transform">
                     <User size={24} />
                   </div>
                   <div className="flex-grow">
                     <p className="font-bold text-text-main text-lg">{client.fullName}</p>
                     <div className="flex flex-wrap gap-x-6 gap-y-1 mt-1 text-sm text-text-placeholder">
                       <span className="flex items-center">
-                        <Mail size={16} className="mr-2 text-primary/50" />
+                        <Mail size={16} className="mr-2 text-primary" />
                         {client.email}
                       </span>
                       {client.phoneNumber && (
                         <span className="flex items-center">
-                          <Phone size={16} className="mr-2 text-primary/50" />
+                          <Phone size={16} className="mr-2 text-primary" />
                           {client.phoneNumber}
                         </span>
                       )}

@@ -20,9 +20,4 @@ export const eventService = {
     deleteEvent: async (id: string): Promise<void> => {
         await apiClient.delete(`/api/v1/events/${id}`);
     },
-
-    getEventClients: async (id: string): Promise<Client[]> => {
-        const response = await apiClient.get(`/api/v1/events/${id}/clients`);
-        return response.data.data;
-    },
 };

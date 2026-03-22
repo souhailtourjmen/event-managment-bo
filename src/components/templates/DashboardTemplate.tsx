@@ -7,6 +7,18 @@ interface TemplateProps {
 }
 
 const DashboardTemplate: React.FC<TemplateProps> = ({ children }) => {
+  const [activeTab, setActiveTab] = React.useState('dashboard');
+
+  React.useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash.replace('#', '') || 'dashboard';
+      setActiveTab(hash);
+    };
+    window.addEventListener('hashchange', handleHashChange);
+    handleHashChange(); // Initial check
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
+
   return (
     <div className="min-h-screen bg-background flex transition-colors duration-300">
       {/* Sidebar */}
@@ -17,16 +29,34 @@ const DashboardTemplate: React.FC<TemplateProps> = ({ children }) => {
           </h1>
         </div>
         <nav className="flex-grow p-4 space-y-2">
-          <a href="#" className="flex items-center p-3 rounded-xl bg-primary/10 text-primary font-bold transition-all">
-            <LayoutDashboard className="mr-3" size={20} />
+          <a 
+            href="#dashboard" 
+            onClick={() => setActiveTab('dashboard')}
+            className={`flex items-center p-3 rounded-xl transition-all ${
+              activeTab === 'dashboard' ? 'bg-primary text-on-primary font-bold shadow-md' : 'text-text-main hover:bg-background'
+            }`}
+          >
+            <LayoutDashboard className={`mr-3 ${activeTab === 'dashboard' ? 'text-on-primary' : ''}`} size={20} />
             Dashboard
           </a>
-          <a href="#" className="flex items-center p-3 rounded-xl text-text-main hover:bg-background transition-all">
-            <Calendar className="mr-3" size={20} />
+          <a 
+            href="#events" 
+            onClick={() => setActiveTab('events')}
+            className={`flex items-center p-3 rounded-xl transition-all ${
+              activeTab === 'events' ? 'bg-primary text-on-primary font-bold shadow-md' : 'text-text-main hover:bg-background'
+            }`}
+          >
+            <Calendar className={`mr-3 ${activeTab === 'events' ? 'text-on-primary' : ''}`} size={20} />
             Évènements
           </a>
-          <a href="#" className="flex items-center p-3 rounded-xl text-text-main hover:bg-background transition-all">
-            <Users className="mr-3" size={20} />
+          <a 
+            href="#clients" 
+            onClick={() => setActiveTab('clients')}
+            className={`flex items-center p-3 rounded-xl transition-all ${
+              activeTab === 'clients' ? 'bg-primary text-on-primary font-bold shadow-md' : 'text-text-main hover:bg-background'
+            }`}
+          >
+            <Users className={`mr-3 ${activeTab === 'clients' ? 'text-on-primary' : ''}`} size={20} />
             Clients
           </a>
         </nav>
@@ -46,7 +76,7 @@ const DashboardTemplate: React.FC<TemplateProps> = ({ children }) => {
             <ThemeToggle />
             <div className="flex items-center space-x-3">
               <span className="text-sm font-bold text-text-main hidden sm:inline-block">Souhail</span>
-              <div className="w-9 h-9 rounded-full bg-primary flex items-center justify-center text-white font-bold shadow-lg shadow-primary/20">
+              <div className="w-9 h-9 rounded-full bg-primary flex items-center justify-center text-on-primary font-bold shadow-lg shadow-primary/20">
                 S
               </div>
             </div>

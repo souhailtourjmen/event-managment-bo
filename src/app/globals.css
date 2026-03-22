@@ -2,7 +2,9 @@
 
 @theme inline {
   --color-primary: var(--primary);
+  --color-on-primary: var(--on-primary);
   --color-secondary: var(--secondary);
+  --color-on-secondary: var(--on-secondary);
   --color-background: var(--background);
   --color-surface: var(--surface);
   --color-error: var(--error);
@@ -18,29 +20,35 @@
 
 :root {
   --primary: #6200EE;
-  --secondary: #03DAC6;
-  --background: #F5F5F5;
+  --on-primary: #FFFFFF;
+  --secondary: #018786;
+  /* Darker teal for better contrast in light mode */
+  --on-secondary: #FFFFFF;
+  --background: #F8F9FA;
   --surface: #FFFFFF;
   --error: #B00020;
-  --success: #4CAF50;
-  --text: #000000;
-  --text-placeholder: #757575;
+  --success: #2E7D32;
+  --text: #1C1B1F;
+  --text-placeholder: #625B71;
   --disabled: #E0E0E0;
-  --border: #BDBDBD;
+  --border: #CAC4D0;
   --white: #FFFFFF;
 }
 
 .dark {
-  --primary: #BB86FC;
-  --secondary: #03DAC6;
-  --background: #121212;
-  --surface: #1E1E1E;
-  --error: #CF6679;
-  --success: #81C784;
-  --text: #FFFFFF;
-  --text-placeholder: #B0B0B0;
-  --disabled: #333333;
-  --border: #444444;
+  --primary: #D0BCFF;
+  /* Lighter for dark mode but with dark text */
+  --on-primary: #381E72;
+  --secondary: #CCC2DC;
+  --on-secondary: #332D41;
+  --background: #1C1B1F;
+  --surface: #2B2930;
+  --error: #F2B8B5;
+  --success: #B4E197;
+  --text: #E6E1E5;
+  --text-placeholder: #938F99;
+  --disabled: #49454F;
+  --border: #49454F;
 }
 
 body {
